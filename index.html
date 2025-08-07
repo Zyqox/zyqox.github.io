@@ -2,23 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zyqox – Phishing URL Scanner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zyqox - AI Phishing Detector</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="container">
     <header>
-      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Logo_1.png?raw=true" alt="Zyqox Logo" />
+      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Logo_1.png?raw=true" alt="Zyqox Logo" class="logo" />
       <h1>🛡️ Zyqox</h1>
-      <p class="subtext">Secure. Scan. Survive. – A public phishing URL detector</p>
+      <p class="tagline">AI-powered scanner to detect and prevent phishing attacks</p>
     </header>
 
-    <section>
+    <section class="scanner">
       <input type="text" id="url" placeholder="Paste suspicious URL here..." />
       <button onclick="checkURL()">Scan Now</button>
       <p id="result"></p>
+    </section>
+
+    <section class="info">
+      <h2>🔎 What is Phishing?</h2>
+      <p>Phishing is a cyber attack where attackers impersonate trusted entities to steal sensitive information like passwords, credit card numbers, or personal data. They often use fake websites, emails, or messages that appear legitimate.</p>
+
+      <h2>🚫 What It Can Cause</h2>
+      <ul>
+        <li>Identity theft</li>
+        <li>Loss of bank or personal information</li>
+        <li>Malware infection</li>
+        <li>Unauthorized access to accounts</li>
+      </ul>
+
+      <h2>✅ How to Stay Safe</h2>
+      <ul>
+        <li>Always verify URLs before clicking</li>
+        <li>Look for HTTPS and proper domains</li>
+        <li>Never enter sensitive info on suspicious sites</li>
+        <li>Use tools like <strong>Zyqox</strong> to scan unknown URLs</li>
+      </ul>
     </section>
 
     <section class="feedback">
@@ -31,10 +56,7 @@
   </main>
 
   <footer>
-    <p>
-      🚀 Built with 💛 by <strong>Zyqox</strong> |
-      <a href="https://github.com/Zyqox/zyqox.github.io" target="_blank">View on GitHub</a>
-    </p>
+    <p>🚀 Built with 💛 by <strong>Zyqox Team</strong> | <a href="https://github.com/Zyqox/zyqox.github.io" target="_blank">View on GitHub</a></p>
   </footer>
 
   <script src="script.js"></script>
