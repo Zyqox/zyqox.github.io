@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zyqox – Phishing URL Scanner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Logo_1.png?raw=true" alt="Zyqox Logo" />
+      <h1>🛡️ Zyqox</h1>
+      <p class="subtext">Secure. Scan. Survive. – A public phishing URL detector</p>
+    </header>
+
+    <section>
+      <input type="text" id="url" placeholder="Paste suspicious URL here..." />
+      <button onclick="checkURL()">Scan Now</button>
+      <p id="result"></p>
+    </section>
+
+    <section class="feedback">
+      <form action="https://formspree.io/f/xqalyvyg" method="POST">
+        <h2>💬 Feedback</h2>
+        <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      🚀 Built with 💛 by <strong>Zyqox</strong> |
+      <a href="https://github.com/Zyqox/zyqox.github.io" target="_blank">View on GitHub</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
