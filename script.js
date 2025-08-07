@@ -1,82 +1,60 @@
+// 🧠 Zyqox Advanced Phishing Detection v2.0
+
 function checkURL() {
   const url = document.getElementById("url").value.trim();
-  const resultEl = document.getElementById("result");
+  const result = document.getElementById("result");
 
   if (!url) {
-    resultEl.innerText = "⚠️ Please enter a URL.";
-    resultEl.style.color = "#ffcc00";
+    result.textContent = "Please enter a URL.";
+    result.style.color = "#ffa500";
     return;
   }
 
   let score = 0;
-  let reasons = [];
+  const lowercaseURL = url.toLowerCase();
 
-  const suspiciousKeywords = [
-    "login", "secure", "verify", "account", "bank", "dropbox",
-    "update", "signin", "confirm", "validate"
+  // ⚠️ Suspicious Patterns
+  const patterns = [
+    /login/, /verify/, /secure/, /update/, /account/, /confirm/, /dropbox/,
+    /paypal/, /signin/, /bank/, /webscr/, /validate/
   ];
+  patterns.forEach(pattern => {
+    if (pattern.test(lowercaseURL)) score += 2;
+  });
+
+  // ❌ Common phishing tricks
+  if (/@/.test(url)) score += 3; // @ symbol
+  if (/https?:\/\/\d{1,3}(\.\d{1,3}){3}/.test(url)) score += 2; // IP URL
+  if ((url.match(/\./g) || []).length > 4) score += 1; // Too many dots
+
+  // 🚩 Known suspicious TLDs
   const badTLDs = [".tk", ".ml", ".ga", ".cf", ".gq", ".ru"];
-  const shorteners = ["bit.ly", "is.gd", "t.co", "tinyurl.com", "ow.ly"];
-  const urlLower = url.toLowerCase();
+  if (badTLDs.some(tld => lowercaseURL.endsWith(tld))) score += 2;
 
-  // 1. Suspicious keywords
-  suspiciousKeywords.forEach((word) => {
-    if (urlLower.includes(word)) {
-      score += 2;
-      reasons.push(`Contains keyword "${word}"`);
-    }
+  // 🪤 Brand impersonations
+  const fakeBrands = [/paypa1/, /faceb00k/, /g00gle/, /micros0ft/, /app1e/, /netf1ix/];
+  fakeBrands.forEach(pattern => {
+    if (pattern.test(lowercaseURL)) score += 2;
   });
 
-  // 2. Bad TLD
-  badTLDs.forEach((tld) => {
-    if (urlLower.endsWith(tld)) {
-      score += 2;
-      reasons.push(`Ends with risky TLD "${tld}"`);
-    }
-  });
+  // 🔗 Shortener URLs
+  const shorteners = ["bit.ly", "is.gd", "tinyurl.com", "t.co", "shorte.st", "loclx.io"];
+  if (shorteners.some(short => lowercaseURL.includes(short))) score += 2;
 
-  // 3. Shortener services
-  shorteners.forEach((short) => {
-    if (urlLower.includes(short)) {
-      score += 2;
-      reasons.push(`Uses URL shortener "${short}"`);
-    }
-  });
+  // 🧠 AI-inspired Heuristic: high entropy/random characters
+  if (/([a-z0-9]{5,}){2,}/.test(lowercaseURL)) score += 1;
 
-  // 4. IP address in URL
-  if (/http[s]?:\/\/\d{1,3}(\.\d{1,3}){3}/.test(url)) {
-    score += 2;
-    reasons.push("Uses IP address");
+  // Final Verdict
+  let verdict = "✅ Safe";
+  let color = "#00ff88";
+
+  if (score >= 10) {
+    verdict = "🚨 High Risk";
+    color = "#ff2d75";
+  } else if (score >= 6) {
+    verdict = "⚠️ Suspicious";
+    color = "#ffae42";
   }
 
-  // 5. @ symbol in URL
-  if (url.includes("@")) {
-    score += 2;
-    reasons.push("Contains '@' symbol");
-  }
-
-  // 6. Brand misspellings
-  if (/paypa1|faceb00k|g00gle|micros0ft|netf1ix|app1e/.test(urlLower)) {
-    score += 3;
-    reasons.push("Contains brand typo (e.g. paypa1, g00gle)");
-  }
-
-  // Final result
-  let resultText = "";
-  let color = "";
-
-  if (score >= 7) {
-    resultText = `🚨 High Risk [Score: ${score}/10]`;
-    color = "#ff4c4c";
-  } else if (score >= 3) {
-    resultText = `⚠️ Suspicious [Score: ${score}/10]`;
-    color = "#ffaa00";
-  } else {
-    resultText = `✅ Safe [Score: ${score}/10]`;
-    color = "#00ff88";
-  }
-
-  // Display result
-  resultEl.innerHTML = `<strong>${resultText}</strong><br>${reasons.length ? "Reasons:<br>• " + reasons.join("<br>• ") : ""}`;
-  resultEl.style.color = color;
+  result.innerHTML = `Result: <span style="color: ${color}; font-weight: bold">${verdict} [Score: ${score}/10]</span>`;
 }
