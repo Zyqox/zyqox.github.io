@@ -1,0 +1,12 @@
+Phishing URLs
+
+1. http://update-dropbox-login.tk
+2. http://paypal.com.login.verify.ml
+3. http://g00gle-account.cf
+
+ Safe URLs
+
+1. https://www.apple.com
+2. https://github.com
+3. https://openai.com
+4. https://wikipedia.org
