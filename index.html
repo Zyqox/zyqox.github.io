@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zyqox - AI Phishing URL Scanner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="container">
+    <!-- Header -->
     <header>
-      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Logo_1.png?raw=true" alt="Zyqox Logo">
+      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Logo_1.png?raw=true" alt="Zyqox Logo" />
       <h1>🛡️ Zyqox</h1>
       <p class="subtext">Your smart assistant to detect and block phishing threats</p>
     </header>
 
-    <section>
-      <input type="text" id="url" placeholder="Paste suspicious URL here...">
+    <!-- URL Scanner -->
+    <section class="scanner">
+      <input type="text" id="url" placeholder="Paste suspicious URL here..." />
       <button onclick="checkURL()">Scan Now</button>
       <p id="result"></p>
     </section>
 
-    <section class="flowchart">
+    <!-- Flowchart -->
+    <section class="flowchart-section">
       <h2>🔍 How to Recognize & Handle Phishing</h2>
-      <p>Follow this simple decision path when dealing with suspicious emails or links:</p>
-      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Flow%20chart.png" alt="Phishing Flowchart" class="flow-img" />
-      <p>
-        Want to learn more? 
-        <a href="https://github.com/august04-oss/codealpha_taks-02/blob/main/Easy-Guide-to-Avoiding-Phishing-Scams.pptx" target="_blank">View full Phishing Guide</a>
+      <p>Follow this decision path when dealing with suspicious emails or links:</p>
+      <img src="https://github.com/Zyqox/zyqox.github.io/blob/main/Flow%20chart.png?raw=true" alt="Phishing Detection Flowchart" class="flow-img" />
+      <p class="guide-link">
+        💡 Learn more: 
+        <a href="https://github.com/august04-oss/codealpha_taks-02/blob/main/Easy-Guide-to-Avoiding-Phishing-Scams.pptx" target="_blank">
+          Easy Guide to Avoiding Phishing Scams (PPT)
+        </a>
       </p>
     </section>
 
-    <section>
+    <!-- Feedback -->
+    <section class="feedback">
       <form action="https://formspree.io/f/xqalyvyg" method="POST">
         <h2>💬 Feedback</h2>
         <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
@@ -40,9 +46,10 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>
-      🚀 Built by <strong>Zyqox Team</strong> |
+      🚀 Built by <strong>Zyqox Team</strong> | 
       <a href="https://github.com/Zyqox/zyqox.github.io" target="_blank" rel="noopener noreferrer">View on GitHub</a>
     </p>
   </footer>
